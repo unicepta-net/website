@@ -1,0 +1,117 @@
+---
+import { company } from '@data/company'
+
+import Layout from '@layouts/Default.astro'
+
+import OpenGraph from '@components/OpenGraph.astro'
+import Link from '@components/Link.astro'
+
+import Map from '@assets/map.svg'
+---
+
+
+
+
+
+<Layout>
+
+  <OpenGraph slot="head"
+    title="Impressum"
+    description=`Kontaktionformationen der ${ company.name.long }`
+  />
+
+  <main id="imprint">
+
+    <h1>Impressum</h1>
+    <p><small>Angaben gemäß &sect; 5 TMG</small></p>
+    <h2>{ company.name.long }</h2>
+
+    <div class="information_grid">
+
+      <address class="information_grid_card information_grid_card--has-map">
+        <Link href="https://osm.org/go/0MGg4Kt1--?m=">
+          <Map />
+        </Link>
+        <div class="information_wrapper">
+          <h3>Anschrift</h3>
+          { company.name.long }<br>
+          { company.address.street } { company.address.number }<br>
+          { company.address.postcode } { company.address.city }
+        </div>
+      </address>
+
+      <div class="information_grid_card">
+        <h3>Vertreten durch</h3>
+        {
+          company.legal.figures.map((figure) => (
+            <p>
+              { figure.title }:<br>
+              { figure.name }
+            </p>
+          ))
+        }
+      </div>
+
+      <div class="information_grid_card">
+        <h3>Registereintrag</h3>
+        <p>
+          Eintragung im Handelsregister<br>
+          Registergericht: Amtsgericht { company.legal.districtCourt }<br>
+          Registernummer: { company.legal.registrar }
+        </p>
+      </div>
+
+      <div class="information_grid_card">
+        <h3>Kontakt</h3>
+        E-Mail: <Link href=`mailto:${ company.contact.email }` external muted>{ company.contact.email }</Link><br>
+        Telefon: <Link href=`tel:${ company.contact.phone }` external muted>{ company.contact.phone }</Link>
+      </div>
+
+    </div>
+
+  </main>
+</Layout>
+
+
+
+
+
+<style lang="scss">
+
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+
+  .information_grid {
+    @include grid($gap: space(xl) space(lg), $column: 330px);
+    margin-block-start: space(lg);
+
+
+    .information_grid_card {
+
+      :global(h3) {
+        margin-block-start: 0;
+      }
+
+
+      &:global(:first-child) { grid-column: 1 / -1; }
+
+
+      &--has-map {
+        @include grid($column: 300px);
+
+
+        :global(svg) {
+          --map-line-colour: var(--grey);
+          --map-background-colour: var(--white-shade);
+
+          max-height: 20rem; min-width: 100px;
+          border-radius: border-radius(md);
+          background-color: var(--map-background-colour);
+        }
+      }
+
+    }
+  }
+
+</style>

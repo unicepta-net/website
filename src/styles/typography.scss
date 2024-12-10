@@ -1,0 +1,48 @@
+@use 'variables' as *;
+@use 'utils' as *;
+
+
+
+body {
+  font-family: Calibri, system-ui, sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.6;
+  color: var(--text);
+  hyphens: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+h1, h2 { color: var(--text-highlight); }
+h1, h2, h3, h4 { line-height: 1.2; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-block: 1.2em .4em;
+  text-wrap: balance;
+}
+
+h1 { font-size: font-size(5x); }
+h2 { font-size: font-size(4x); }
+h3 { font-size: font-size(3x); }
+h4 { font-size: font-size(2x); }
+h5 { font-size: font-size(xl); }
+h6 { font-size: font-size(lg); }
+
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+
+p {
+  margin-block: .5em;
+  text-wrap: pretty;
+}
+
+small { font-size: font-size(xs); }
+
+
+
+address { font-style: normal; }
+
+
+
+ul, ol { margin: 0; }
+
+input, button, textarea, select { font: inherit; }

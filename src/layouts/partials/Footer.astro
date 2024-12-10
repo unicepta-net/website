@@ -1,0 +1,148 @@
+---
+import { company } from '@data/company'
+import { footer, social } from '@data/navigation'
+
+import Logo from '@components/Logo.astro'
+import Link from '@components/Link.astro'
+---
+
+
+
+
+
+<footer id="site_footer">
+
+  <section class="footer_about footer_section">
+    <h6 class="footer_section--header"><Logo size={20} variant="name" /></h6>
+    <p>Wir sind erfahrener Ratgeber, kritischer Sparringspartner und praxiserprobter Begleiter. Wir sind zu Hause im Akzeptanzmanagement, im Notfall- und Krisenmanagement sowie in der klassischen Unternehmenskommunikation.</p>
+    <p class="footer_about--copyright">&copy; { new Date(Date.now()).getFullYear() } { company.name.long }</p>
+  </section>
+
+  <section class="footer_navigation footer_section">
+    <nav>
+      <h6 class="footer_section--header">Sitemap</h6>
+      <ul>
+        { footer.map((link) => (
+          <li>
+            <Link href={link.target} external={link.external}>
+              {link.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <nav>
+      <h6 class="footer_section--header">Socials</h6>
+      <ul>
+        { social.map((link) => (
+          <li>
+            <Link href={link.target} external={link.external}>
+              {link.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </section>
+
+</footer>
+
+
+
+
+
+<style lang="scss">
+
+  @use 'sass:map';
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+  $breakpoints: (
+    'small': 400px,
+    'medium': 600px,
+    'large': 1000px,
+  );
+
+
+
+  #site_footer {
+    @include flexbox($direction: column-reverse);
+    margin-block-start: space(lg); padding-block: space(lg);
+    border-radius: border-radius(sm);
+    background-color: var(--background-shade);
+    font-size: font-size(sm);
+    color: var(--text);
+
+
+    @container (max-width: #{ $body-max-width }) {
+      /*  This is to prevent the content reaching the edge of the viewport.
+       *  It's achieved through a negative margin to negate the body padding
+       *  and then adding the body padding as inline padding.
+       */
+      margin: calc(var(--body-padding) * -1); margin-block-start: space(lg); padding-inline: var(--body-padding);
+    }
+
+
+    @container (min-width: #{ map.get($breakpoints, 'small') }) {
+      @include grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "nav nav"
+                             "about about";
+      };
+    }
+
+    @container (min-width: #{ map.get($breakpoints, 'medium') }) {
+      grid-template-columns: repeat(2, 1fr) 2fr;
+      grid-template-areas: "nav nav about";
+    }
+
+    @container (min-width: #{ map.get($breakpoints, 'large') }) {
+      grid-template-columns: repeat(3, 1fr) 2fr;
+      grid-template-areas: "nav nav nav about";
+    }
+
+
+    .footer_section--header {
+      @include reset-spacing;
+    }
+  }
+
+
+
+  .footer_about {
+    grid-area: about;
+
+    &--copyright {
+      font-size: font-size(xs);
+    }
+   }
+
+
+
+  .footer_navigation {
+    grid-area: nav;
+    @include grid {
+      grid-template-columns: subgrid;
+    };
+
+
+    nav:nth-child(2) {
+      @container (min-width: #{ map.get($breakpoints, 'small') }) { justify-self: end; }
+      @container (min-width: #{ map.get($breakpoints, 'medium') }) { justify-self: start; }
+    }
+
+
+    ul {
+      @include flexbox($direction: row, $gap: space(md));
+      @include reset-list;
+      margin-block: .5em;
+
+
+      @container (min-width: #{ map.get($breakpoints, small) }) {
+        gap: 0;
+        flex-direction: column;
+      }
+    }
+  }
+
+</style>

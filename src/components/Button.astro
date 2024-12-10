@@ -1,0 +1,106 @@
+---
+import { Icon } from 'astro-icon/components'
+
+
+interface Props {
+  colour?: 'primary' | 'secondary'
+  icon?: string
+  disabled?: boolean
+}
+
+const { colour, icon, disabled = false } = Astro.props
+---
+
+
+
+
+
+<button {disabled} class="button" class:list={[{
+    'button--default': colour == null,
+    'button--primary': colour == 'primary',
+    'button--secondary': colour == 'secondary',
+    'button--has-icon': icon != undefined
+  }]}>
+  { icon && <Icon name={icon} /> }
+  <slot />
+</button>
+
+
+
+
+
+<style lang="scss">
+
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+
+  @mixin button ($colour, $colourHover, $background, $backgroundHover, $shadow) {
+    background-color: $background;
+    color: $colour;
+
+    &:hover,
+    &:focus {
+      background-color: $backgroundHover;
+      box-shadow: 0 0 0 .2em $shadow;
+      color: $colourHover;
+    }
+  }
+
+
+  // Use pointer cursors when buttons are inside links.
+  :global(a button) { cursor: pointer; }
+
+  // Disables text-decoration as well.
+  :global(a:has(button):hover):hover { text-decoration: none; }
+
+
+  .button {
+    @include reset-spacing;
+    padding: .25em 1em;
+    border: none; border-radius: border-radius(sm);
+    transition: .3s;
+
+
+    &--default {
+      @include button(
+        $colour: var(--text),
+        $colourHover: var(--white),
+        $background: color-mix(in srgb, var(--black) 5%, transparent),
+        $backgroundHover: var(--black-tint),
+        $shadow: color-mix(in srgb, var(--black-tint) 25%, transparent)
+      );
+    }
+
+
+    &--primary {
+      @include button(
+        $colour: var(--primary),
+        $colourHover: var(--white),
+        $background: color-mix(in srgb, var(--primary) 10%, transparent),
+        $backgroundHover: var(--primary),
+        $shadow: color-mix(in srgb, var(--primary) 25%, transparent)
+      )
+    }
+
+
+    &--secondary {
+      @include button(
+        $colour: var(--secondary),
+        $colourHover: var(--white),
+        $background: color-mix(in srgb, var(--secondary) 10%, transparent),
+        $backgroundHover: var(--secondary),
+        $shadow: color-mix(in srgb, var(--secondary) 25%, transparent)
+      )
+    }
+
+
+    &--has-icon {
+      // .5em matches half the horizontal padding
+      @include flexbox($gap: .5em) {
+        align-items: center;
+      };
+    }
+  }
+
+</style>

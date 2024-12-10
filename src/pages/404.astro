@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/Default.astro'
+
+import OpenGraph from '@components/OpenGraph.astro'
+import Link from '@components/Link.astro'
+import Button from '@components/Button.astro'
+---
+
+
+
+
+
+<Layout>
+
+  <OpenGraph slot="head"
+    title="unicepta.net"
+    description="Lorem Ipsum dolor sit happens"
+  />
+
+  <main>
+    <h1>404 ( •᷄‎ࡇ•᷅ )</h1>
+    <p>Die angeforderte Seite existiert nicht.</p>
+    <Link href="/">
+      <Button colour="primary" icon="ph:arrow-bend-left-up-fill">zur Startseite</Button>
+    </Link>
+
+  </main>
+
+</Layout>
+
+
+
+
+
+<style lang="scss">
+
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+
+
+  main {
+    @include flexbox($gap: 0, $direction: column) {
+      align-items: center;
+      justify-content: center;
+    };
+  }
+
+</style>

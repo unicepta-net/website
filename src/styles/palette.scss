@@ -1,0 +1,45 @@
+:root {
+
+  --black: #101015;
+  --black-tint: #14141B;
+  --black-shade: #0B0B0E;
+
+  --grey: #5D5D62;
+  --grey-tint: #68686F;
+  --grey-shade: #545459;
+
+  --white: #FCFAF8;
+  --white-tint: #FFF;
+  --white-shade: #F5F0EA;
+
+  --primary: #A5042F;
+  --primary-tint: #B80334;
+  --primary-shade: #900329;
+
+  --secondary: #2F5279;
+  --secondary-tint: #355B88;
+  --secondary-shade: #29486B;
+
+
+  --background: var(--white);
+  --background-tint: var(--white-tint);
+  --background-shade: var(--white-shade);
+
+  --text: var(--grey);
+  --text-highlight: var(--black);
+  --text-inverted: var(--white-tint);
+
+
+
+  // @media (prefers-color-scheme: dark) {
+
+  //   --background: var(--black-tint);
+  //   --background-tint: var(--black-shade);
+  //   --background-shade: var(--black);
+
+  //   --text: var(--white-shade);
+  //   --text-highlight: var(--white);
+
+  // }
+
+}

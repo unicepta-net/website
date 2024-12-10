@@ -1,0 +1,51 @@
+---
+interface Props {
+  href: string
+  external?: boolean
+  muted?: boolean
+  tabindex?: number
+}
+
+const { href, external = false, muted = false, tabindex = 0 } = Astro.props
+---
+
+
+
+
+
+<a href={href} tabindex={tabindex} class:list={[{
+  'muted': muted == true
+}]}>
+  <slot />{external ? <span class="external">&#x2197;</span> : ""}</a>
+
+
+
+
+
+<style lang="scss">
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 250ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: var(--primary-shade);
+      text-decoration: underline;
+    }
+
+
+    &.muted {
+      color: currentColor;
+    }
+
+
+    .external {
+      font-size: 60%;
+      font-weight: 900;
+      vertical-align: super;
+    }
+  }
+
+</style>

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# while public data, this doesn't need to be on GitHub
+src/data/company.ts

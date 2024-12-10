@@ -1,0 +1,31 @@
+---
+import { company } from "@data/company"
+
+
+interface Props {
+  title: string
+  description: string
+  ogImage?: string
+}
+
+const { title, description, ogImage = '/embed.jpg' } = Astro.props
+
+const currentPath = new URL(Astro.request.url).pathname
+---
+
+
+
+
+
+<title>{ title } | { company.name.short }</title>
+<meta name="description" content={ description } />
+
+<meta property="og:url" content=`${ company.url}${ currentPath }` />
+<meta property="og:title" content={ title } />
+<meta property="og:description" content={ description } />
+<meta property="og:image" content={ ogImage } />
+<meta content="#A5042F" data-react-helmet="true" name="theme-color" />
+
+<meta property="twitter:title" content={ title } />
+<meta property="twitter:description" content={ description } />
+<meta name="twitter:card" content="summary_large_image" />

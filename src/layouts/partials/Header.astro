@@ -1,0 +1,165 @@
+---
+import { company } from '@data/company'
+import { header } from '@data/navigation'
+
+import Logo from '@components/Logo.astro'
+import Link from '@components/Link.astro'
+import Button from '@components/Button.astro'
+
+
+const pathname = new URL(Astro.request.url).pathname
+const currentPath = pathname
+---
+
+
+
+
+
+<header id="site_header">
+
+  <a href="/" class="site_header--logo">
+    <Logo variant="name" />
+  </a>
+
+  <nav class="site_header--navigation">
+    <ul>
+      { header.map((link) => (
+        <li class:list={[{
+          active: currentPath === link.target
+        }]}>
+          <Link href={link.target} external={link.external}>
+            {link.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
+    <Link href=`mailto:${ company.contact.email }` tabindex={-1}>
+      <Button colour="secondary" icon="ph:chats-teardrop-fill">Kontakt</Button>
+    </Link>
+  </nav>
+
+</header>
+
+
+
+
+
+<style lang="scss">
+
+  @use 'sass:map';
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+
+  $breakpoints: (
+    'small': 500px,
+    'medium': 600px,
+    'large': 1000px,
+  );
+
+
+
+  #site_header {
+    @include grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: auto;
+        grid-template-areas: "logo logo logo logo"
+                             "nav nav nav nav"
+                             "nav nav nav nav";
+        align-items: center;
+      };
+    margin-block-start: space(md);
+
+
+    .site_header--logo {
+      grid-area: logo;
+      justify-self: center;
+      height: clamp(24px, 5vw, 32px);
+      color: var(--grey);
+    }
+
+
+
+    .site_header--navigation {
+
+      grid-area: nav;
+      @include grid {
+        grid-template: subgrid / subgrid;
+        grid-template-areas: "links links links links";
+      };
+
+
+      // Contact Button
+      :global(> :nth-child(2)) {
+        grid-area: contact;
+        display: none;
+      }
+
+
+      ul {
+        --nav-link-color: var(--text);
+        --nav-link-active-color: var(--primary);
+        --nav-link-hover-background: color-mix(in srgb, var(--background), var(--nav-link-active-color) 10%);
+        --nav-link-active-background: color-mix(in srgb, var(--background), var(--nav-link-active-color) 10%);
+
+        grid-area: links;
+        @include reset-list;
+        @include flexbox {
+          flex-wrap: wrap;
+          justify-content: center;
+        };
+
+
+        // Overwrite default link styling
+        :global(a) {
+          display: inline-block;
+          padding: space(sm) space(md);
+          border-radius: border-radius(sm);
+          color: var(--nav-link-color);
+          transition: background-color .5s, color .5s;
+
+          &:hover,
+          &:focus {
+            background-color: var(--nav-link-hover-background) !important;
+            text-decoration: none;
+          }
+        }
+
+
+        .active :global(a) {
+          color: var(--nav-link-active-color);
+        }
+      }
+
+    }
+
+
+    @container (min-width: #{ map.get($breakpoints, 'small') }) {
+      grid-template-areas: "logo nav nav nav";
+
+      .site_header--logo { justify-self: start; }
+
+      .site_header--navigation {
+        grid-template-areas: "links links links links";
+
+        ul { justify-content: end; }
+      }
+    }
+
+
+    @container (min-width: #{ map.get($breakpoints, 'large') }) {
+      .site_header--navigation {
+        grid-template-areas: "links links contact contact";
+
+        ul { justify-content: center; }
+
+        // Contact Button
+        :global(> :nth-child(2)) {
+          display: inherit;
+          justify-items: end;
+        }
+      }
+    }
+  }
+
+</style>

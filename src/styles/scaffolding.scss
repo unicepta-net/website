@@ -1,0 +1,37 @@
+@use './variables' as *;
+@use './utils' as *;
+
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+
+
+:focus {
+  outline-color: var(--secondary);
+}
+
+
+
+:root {
+
+  --body-max-width: #{$body-max-width};
+  --body-padding: #{space(md)};
+  --calc-body-padding: calc((100svw - var(--body-max-width)) / 2);
+
+}
+
+
+
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+figure {
+  @include reset-spacing;
+}

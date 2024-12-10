@@ -1,0 +1,34 @@
+@use 'sass:map';@use '@styles/variables' as *;
+
+
+@mixin reset-spacing {
+  margin: 0; padding: 0;
+}
+
+
+
+@mixin reset-list {
+  @include reset-spacing;
+  list-style: none;
+}
+
+
+
+@mixin flexbox($direction: row, $gap: space(md)) {
+  display: flex; gap: $gap;
+  flex-direction: $direction;
+  @content;
+}
+
+
+
+@mixin auto-grid($column: 250px ) {
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax($column, 1fr));
+}
+
+@mixin grid($gap: space(md), $column: null) {
+  display: grid; gap: $gap;
+  @if $column { @include auto-grid($column); }
+  @content;
+}

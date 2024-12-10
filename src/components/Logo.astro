@@ -1,0 +1,45 @@
+---
+import { company } from '@data/company'
+import { logoVariants } from '@data/logo'
+
+
+
+interface Props {
+  size?: number
+  variant?: 'icon' | 'name' | 'claim'
+}
+
+const { size, variant = 'name' } = Astro.props
+const logoHeight = size ? `${size/10}rem` : '100%'
+---
+
+
+
+
+
+<svg
+  viewBox={logoVariants[variant].viewBox}
+  style={`height:${logoHeight};`}
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xml:space="preserve"
+>
+  <title>{company.name.long}</title>
+  {logoVariants[variant].paths.map((element) => <path d={element.path} style={`fill: ${element.fill}`} />)}
+</svg>
+
+
+
+
+
+<style lang="scss">
+
+  svg {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke-linejoin: round;
+    stroke-miterlimit: 2;
+  }
+
+</style>

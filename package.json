@@ -9,9 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.3"
+    "@astrojs/mdx": "^4.0.1",
+    "astro": "^5.0.3",
+    "astro-icon": "^1.1.4"
   },
   "devDependencies": {
+    "@iconify-json/ph": "^1.2.1",
     "sass": "^1.82.0"
   }
 }
