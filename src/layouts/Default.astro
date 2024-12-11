@@ -1,55 +1,21 @@
 ---
-import Header from './partials/Header.astro';
-import Footer from './partials/Footer.astro';
+import Header from './partials/Header.astro'
+import Footer from './partials/Footer.astro'
+
+import Skeleton from "./_Skeleton.astro"
 ---
 
 
 
-<!doctype html>
-<html lang="de">
+<Skeleton>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <slot name="head" />
-  </head>
+  {/* This line propagates the OpenGraph data to the Skeleton's <head> */}
+  <slot name="head" slot="head" />
 
-  <body>
-    <Header />
+  <Header />
+  <div id="site_content">
     <slot />
-    <Footer />
-  </body>
+  </div>
+  <Footer />
 
-</html>
-
-
-
-
-
-<style lang="scss" is:global>
-
-  @use "@styles/palette";
-  @use "@styles/scaffolding";
-  @use "@styles/typography";
-
-  @use "@styles/utils" as *;
-
-
-
-  body {
-    @include grid($gap: var(--body-padding)) {
-      grid-template-rows: auto 1fr auto;
-    };
-    @include reset-spacing;
-    padding: var(--body-padding);
-    min-height: 100vh;
-    background-color: var(--background);
-    container-type: inline-size;
-
-
-    > * { padding-inline: var(--calc-body-padding); }
-  }
-
-</style>
+</Skeleton>
