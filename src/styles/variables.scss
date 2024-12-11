@@ -3,6 +3,9 @@
 $base-size: 3;
 $body-max-width: 1200px;
 
+$stack-sans: 'Calibri', system-ui, sans-serif;
+$stack-serif: 'Playfair Display', 'Didot', 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+
 
 
 @function border-radius ($size: md) {
@@ -34,6 +37,6 @@ $body-max-width: 1200px;
   @if $size == xl { @return 126%; }
   @if $size == 2x { @return 142%; }
   @if $size == 3x { @return 160%; }
-  @if $size == 4x { @return 180%; }
-  @if $size == 5x { @return 202%; }
+  @if $size == 4x { @return 202%; }
+  @if $size == 5x { @return 248%; }
 }
