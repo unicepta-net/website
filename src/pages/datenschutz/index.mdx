@@ -34,7 +34,7 @@ Vorantwortlich für den Inhalt: **{ company.name.long }** vertreten durch: **{ c
 
 Anschrift: { company.address.street } { company.address.number } | { company.address.postcode } { company.address.city }
 
-Kontakt: [info[at]unicepta.net](mailto:info@unicepta.net)
+Kontakt: <Link href={`mailto:${ company.contact.email }`} external>{ company.contact.email.replace('@', '[at]') }</Link>
 
 
 
