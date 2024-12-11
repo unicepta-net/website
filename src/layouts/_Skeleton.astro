@@ -1,0 +1,50 @@
+---
+import '@styles/palette.scss'
+import '@styles/scaffolding.scss'
+import '@styles/typography.scss'
+---
+
+
+
+
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="darkreader-lock" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+
+
+
+
+<style lang="scss" is:global>
+
+  @use "@styles/utils" as *;
+
+
+
+  body {
+    @include grid($gap: var(--body-padding)) {
+      grid-template-rows: auto 1fr auto;
+    };
+    @include reset-spacing;
+    padding: var(--body-padding);
+    min-height: 100vh;
+    background-color: var(--background);
+    container-type: inline-size;
+
+
+    > * { padding-inline: var(--calc-body-padding); }
+  }
+
+</style>
