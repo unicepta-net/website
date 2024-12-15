@@ -32,4 +32,4 @@ const socials: LinkList = {
 
 
 export default socials
-export type { SocialLink, LinkList }
+export type { SocialLink }
