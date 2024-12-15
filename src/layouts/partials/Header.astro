@@ -27,7 +27,7 @@ const currentPath = pathname
         <li class:list={[{
           active: currentPath === link.target
         }]}>
-          <Link href={link.target} external={link.external}>
+          <Link href={link.target}>
             {link.title}
           </Link>
         </li>
