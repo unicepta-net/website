@@ -24,7 +24,7 @@ import Link from '@components/Link.astro'
       <ul>
         { footer.map((link) => (
           <li>
-            <Link href={link.target} external={link.external}>
+            <Link href={link.target}>
               {link.title}
             </Link>
           </li>
@@ -36,7 +36,7 @@ import Link from '@components/Link.astro'
       <ul>
         { social.map((link) => (
           <li>
-            <Link href={link.target} external={link.external}>
+            <Link href={link.target}>
               {link.title}
             </Link>
           </li>

@@ -3,7 +3,6 @@ import socials from "./socials"
 type NavLink = {
   title: string
   target: string
-  external?: boolean
 }
 
 
@@ -56,17 +55,14 @@ const social: NavLink[] = [
   {
     title: socials.linkedin.title,
     target: socials.linkedin.url,
-    external: true,
   },
   {
     title: socials.bluesky.title,
     target: socials.bluesky.url,
-    external: true,
   },
   {
     title: socials.github.title,
     target: socials.github.url,
-    external: true,
   },
 ]
 
