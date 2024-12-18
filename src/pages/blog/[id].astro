@@ -1,0 +1,138 @@
+---
+import { getCollection, render } from 'astro:content'
+import { Picture } from 'astro:assets'
+
+import Layout from '@layouts/Default.astro'
+
+import Link from '@components/Link.astro'
+
+import OpenGraph from '@components/OpenGraph.astro'
+import { formatDateString } from '@lib/utils';
+
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+
+
+
+
+<Layout>
+
+  <OpenGraph slot="head"
+    title={ post.data.title }
+    description={ post.data.summary }
+  />
+
+  <article class="blog_article">
+    <header class="blog_article-header">
+      <h1>{post.data.title}</h1>
+      <p>{ formatDateString(post.data.datePosted) }</p>
+      <p>{ post.data.summary }</p>
+      <figure layout-breakout>
+        <Picture
+          src={ post.data.hero.image }
+          alt={ post.data.hero.description }
+          formats={['avif', 'webp']}
+          widths={[400, 800, 1200]}
+        />
+        {
+          post.data.hero.artist &&
+          post.data.hero.original &&
+          ( <figcaption>{ post.data.hero.description } | Bild von: <Link href={ post.data.hero.original }>{ post.data.hero.artist }</Link></figcaption> )
+        }
+      </figure>
+    </header>
+
+    <Content />
+  </article>
+
+</Layout>
+
+
+
+
+<style lang="scss" is:global>
+/*  This has to be global due to Astro's way of scoping things.
+ *  Making the entire block global is easier to read and maintain
+ *  compared to unsing the :global() selector multiple times. */
+
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+  $article-max-width: 80ch;
+  $article-breakout-size: 10ch;
+
+
+  .blog_article {
+    margin-inline: auto;
+    max-width: $article-max-width;
+
+    p { text-align: justify; text-align-last: left; }
+
+
+    &-header {
+      img {
+        aspect-ratio: 2/1;
+        object-fit: cover; object-position: center;
+      }
+    }
+
+
+    figure {
+
+      figcaption {
+        margin-block-start: .5em;
+        font-style: italic;
+        font-size: font-size(xs);
+        text-align: center;
+      }
+
+
+      picture, img {
+        width: 100%; height: 100%;
+        border-radius: border-radius(sm);
+      }
+
+
+      &[layout-breakout] {
+        margin-block: space(md);
+
+        @container (min-width: #{ $article-max-width + ( $article-breakout-size * 2) }) {
+          margin-block: space(lg);
+          width: calc(100% + #{ $article-breakout-size * 2 });
+          margin-inline-start: calc(#{ $article-breakout-size * -1 });
+        }
+      }
+
+
+      @container (min-width: #{ $article-max-width }) {
+        &[layout-right] {
+          float: right;
+          margin-inline-start: space(lg);
+          max-width: 50%;
+
+          figcaption { text-align: right; }
+        }
+
+        &[layout-left] {
+          float: left;
+          margin-inline-end: space(lg);
+          max-width: 50%;
+
+          figcaption { text-align: left; }
+        }
+      }
+    }
+  }
+
+</style>

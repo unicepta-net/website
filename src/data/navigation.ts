@@ -23,8 +23,8 @@ const header: NavLink[] = [
     target: "/unternehmen",
   },
   {
-    title: "404",
-    target: "/404"
+    title: "Blog",
+    target: "/blog"
   }
 ]
 
