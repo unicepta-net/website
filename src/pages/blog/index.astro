@@ -1,0 +1,51 @@
+---
+import { company } from '@data/company'
+import { getCollection } from 'astro:content'
+
+import Layout from '@layouts/Default.astro'
+const posts = await getCollection('blog')
+
+import OpenGraph from '@components/OpenGraph.astro'
+import BlogPostCard from '@components/BlogPostCard.astro'
+---
+
+
+
+
+
+<Layout>
+
+  <OpenGraph slot="head"
+    title="Über uns"
+    description={ company.blurb }
+  />
+
+  <main>
+    <h1>Die letzten Artikel</h1>
+    <section class="article-list">
+      {posts.map((post: any) => (
+        <BlogPostCard post={post} />
+      ))}
+    </section>
+  </main>
+
+</Layout>
+
+
+
+
+
+<style lang="scss">
+
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+
+  .article-list {
+    @include grid($gap: space(md), $column: 400px);
+    @container (min-width: 900px) { gap: space(lg); }
+
+    :global(> *:nth-child(1)) { grid-column: 1 / -1; }
+  }
+
+</style>

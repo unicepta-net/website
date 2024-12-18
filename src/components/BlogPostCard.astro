@@ -1,0 +1,122 @@
+---
+import { formatDateString } from '@lib/utils'
+
+import { Picture } from 'astro:assets'
+
+import Button from '@components/Button.astro'
+
+const { post } = Astro.props
+---
+
+
+
+
+
+<article class="article_card">
+  <div class="article_card-grid">
+    <a class="article_card-image" href=`/blog/${post.id}`>
+      <Picture
+        src={ post.data.hero.image }
+        alt={ post.data.hero.description }
+        formats={['avif', 'webp']}
+        widths={[400, 800, 1200]}
+      />
+    </a>
+    <a class="article_card-title" href=`/blog/${post.id}`>
+      <h3 class="article_card-title">{ post.data.title }</h3>
+    </a>
+    <p class="article_card-summary">{ post.data.summary }</p>
+    <p class="article_card-date">{ formatDateString(post.data.datePosted) }</p>
+    <a class="article_card-readmore" href=`/blog/${post.id}` tabindex="-1">
+      <Button icon="ph:article-fill">Weiterlesen</Button>
+    </a>
+  </div>
+</article>
+
+
+
+
+
+
+<style lang="scss">
+
+  @use '@styles/variables' as *;
+  @use '@styles/utils' as *;
+
+
+
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+
+
+  .article_card {
+    container-type: inline-size; container-name: article_card;
+    padding: space(md);
+    border-radius: border-radius(sm);
+    background-color: var(--background-shade);
+
+
+
+    &-grid {
+      @include grid($gap: space(md)) {
+        grid-template: repeat(4, min-content) / 50% repeat(2, 1fr);
+        grid-template-areas: "image image image"
+                              "title title title"
+                              "summary summary summary"
+                              "date readmore readmore";
+      };
+    }
+
+    &-title,
+    &-summary,
+    &-date { margin-block: 0; }
+
+    &-image   { grid-area: image; }
+    &-title   { grid-area: title; align-self: end; }
+    &-summary { grid-area: summary; align-self: start; }
+
+    &-date {
+      grid-area: date;
+      align-self: center;
+      font-size: font-size(xs);
+    }
+
+    &-readmore {
+      grid-area: readmore;
+      align-self: center;
+      justify-self: end;
+    }
+
+
+    @container article_card (min-width: 800px) {
+      &-grid {
+        gap: space(md) space(lg);
+        grid-template-areas: "image title title"
+                              "image summary summary"
+                              "image summary summary"
+                              "image date readmore";
+      }
+    }
+  }
+
+
+  .article_card-image {
+    display: block;
+    block-size: 100%;
+
+
+    picture,
+    img { width: 100%; height: 100%; }
+
+
+    img {
+      width: 100%; height: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover; object-position: center;
+      border-radius: border-radius(sm);
+    }
+  }
+
+</style>
