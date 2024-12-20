@@ -1,21 +1,20 @@
 ---
-title: "Hinunter in den Kaninchenbau"
-summary: "Alice fing an sich zu langweilen; sie saß schon lange bei ihrer Schwester am Ufer und hatte nichts zu thun. Das Buch, das ihre Schwester las, gefiel ihr nicht; denn es waren weder Bilder noch Gespräche darin. »Und was nützen Bücher,« dachte Alice, »ohne Bilder und Gespräche?«"
-datePosted: "2024-12-16"
+title: 'Hinunter in den Kaninchenbau'
+summary: 'Alice fing an sich zu langweilen; sie saß schon lange bei ihrer Schwester am Ufer und hatte nichts zu thun. Das Buch, das ihre Schwester las, gefiel ihr nicht; denn es waren weder Bilder noch Gespräche darin. »Und was nützen Bücher,« dachte Alice, »ohne Bilder und Gespräche?«'
+datePosted: '2024-12-16'
 author:
-  name: "Lewis Caroll"
-  title: "Autor"
+  name: 'Lewis Caroll'
+  title: 'Autor'
 hero:
-  image: "./rabbit.jpg"
-  description: "Ein weißer Hase im Feld sitzend"
-  artist: "Andy Brunner"
-  original: "https://unsplash.com/photos/white-rabbit-on-green-grass-field-A10ZZ_oBBME"
+  image: './rabbit.jpg'
+  description: 'Ein weißer Hase im Feld sitzend'
+  artist: 'Andy Brunner'
+  original: 'https://unsplash.com/photos/white-rabbit-on-green-grass-field-A10ZZ_oBBME'
 ---
 
-import { Picture } from 'astro:assets'
+import Figure from '@components/Figure.astro'
 import Hedge from './hedge.jpg'
 import Queen from './queen.jpg'
-
 
 
 Sie überlegte sich eben, (so gut es ging, denn sie war schläfrig und dumm von der Hitze,) ob es der Mühe werth sei aufzustehen und Gänseblümchen zu pflücken, um eine Kette damit zu machen, als plötzlich ein weißes Kaninchen mit rothen Augen dicht an ihr vorbeirannte.
@@ -28,15 +27,13 @@ Den nächsten Augenblick war sie ihm nach in das Loch hineingesprungen, ohne zu 
 
 Der Eingang zum Kaninchenbau lief erst geradeaus, wie ein Tunnel, und ging dann plötzlich abwärts; ehe Alice noch den Gedanken fassen konnte sich schnell festzuhalten, fühlte sie schon, daß sie fiel, wie es schien, in einen tiefen, tiefen Brunnen.
 
-<figure layout-left>
-  <Picture
-    src={Hedge}
-    alt="Hole in the Hedge"
-    formats={['avif', 'webp']}
-    widths={[400, 600]}
-  />
-  <figcaption>Das Loch in der Hecke – der Zugang zum Wunderland</figcaption>
-</figure>
+<Figure
+  src={ Hedge }
+  alt='Hole in the Hedge'
+  caption='Das Loch in der Hecke – der Zugang zum Wunderland'
+  layout='left'
+  context='blog'
+/>
 
 Entweder mußte der Brunnen sehr tief sein, oder sie fiel sehr langsam; denn sie hatte Zeit genug, sich beim Fallen umzusehen und sich zu wundern, was nun wohl geschehen würde. Zuerst versuchte sie hinunter zu sehen, um zu wissen wohin sie käme, aber es war zu dunkel etwas zu erkennen. Da besah sie die Wände des Brunnens und bemerkte, daß sie mit Küchenschränken und Bücherbrettern bedeckt waren; hier und da erblickte sie Landkarten und Bilder, an Haken aufgehängt. Sie nahm im Vorbeifallen von einem der Bretter ein Töpfchen mit der Aufschrift: »Eingemachte Apfelsinen«, aber zu ihrem großen Verdruß war es leer. Sie wollte es nicht fallen lassen, aus Furcht Jemand unter sich zu tödten; und es gelang ihr, es in einen andern Schrank, an dem sie vorbeikam, zu schieben.
 
@@ -48,15 +45,13 @@ Wollte denn der Fall nie endigen? »Wie viele Meilen ich wohl jetzt gefallen bin
 
 Bald fing sie wieder an. »Ob ich wohl ganz durch die Erde fallen werde! Wie komisch das sein wird, bei den Leuten heraus zu kommen, die auf dem Kopfe gehen! die Antipathien, glaube ich.« (Diesmal war es ihr ganz lieb, daß Niemand zuhörte, denn das Wort klang ihr gar nicht recht.) »Aber natürlich werde ich sie fragen müssen, wie das Land heißt. Bitte, liebe Dame, ist dies Neu-Seeland oder Australien?« (Und sie versuchte dabei zu knixen, – denkt doch, knixen, wenn man durch die Luft fällt! Könntet ihr das fertig kriegen?) »Aber sie werden mich für ein unwissendes kleines Mädchen halten, wenn ich frage! Nein, es geht nicht an zu fragen; vielleicht sehe ich es irgendwo angeschrieben.«
 
-<figure layout-right>
-  <Picture
-    src={Queen}
-    alt="Queen of Hearts"
-    formats={['avif', 'webp']}
-    widths={[400, 600]}
-  />
-  <figcaption>Die Herzkönigin in voller Pracht</figcaption>
-</figure>
+<Figure
+  src={ Queen }
+  alt='Queen of Hearts'
+  caption='Die Herzkönigin in voller Pracht'
+  layout='right'
+  context='blog'
+/>
 
 Hinunter, hinunter, hinunter! Sie konnte nichts weiter thun, also fing Alice bald wieder zu sprechen an. »Dinah wird mich gewiß heut Abend recht suchen!« (Dinah war die Katze.) »Ich hoffe, sie werden ihren Napf Milch zur Theestunde nicht vergessen. Dinah! Miez! ich wollte, du wärest hier unten bei mir. Mir ist nur bange, es giebt keine Mäuse in der Luft; aber du könntest einen Spatzen fangen; die wird es hier in der Luft wohl geben, glaubst du nicht? Und Katzen fressen doch Spatzen?« Hier wurde Alice etwas schläfrig und redete halb im Traum fort. »Fressen Katzen gern Spatzen? Fressen Katzen gern Spatzen? Fressen Spatzen gern Katzen?« Und da ihr Niemand zu antworten brauchte, so kam es gar nicht darauf an, wie sie die Frage stellte. Sie fühlte, daß sie einschlief und hatte eben angefangen zu träumen, sie gehe Hand in Hand mit Dinah spazieren, und frage sie ganz ernsthaft: »Nun, Dinah, sage die Wahrheit, hast du je einen Spatzen gefressen?« da mit einem Male, plump! plump! kam sie auf einen Haufen trocknes Laub und Reisig zu liegen, – und der Fall war aus.
 

@@ -1,7 +1,16 @@
 @use 'sass:math';
 
 $base-size: 3;
-$body-max-width: 1200px;
+$body-max-width: 120ch;
+$blog-max-width: 80ch;
+$image-breakout-size: 10ch;
+
+:root {
+  --body-max-width: #{ $body-max-width };
+  --blog-max-width: #{ $blog-max-width };
+  --image-breakout-size: #{ $image-breakout-size };
+}
+
 
 $stack-sans: 'Calibri', system-ui, sans-serif;
 $stack-serif: 'Playfair Display', 'Didot', 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;

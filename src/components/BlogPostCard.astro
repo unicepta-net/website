@@ -1,9 +1,8 @@
 ---
 import { formatDateString } from '@lib/utils'
 
-import { Picture } from 'astro:assets'
-
 import Button from '@components/Button.astro'
+import Figure from '@components/Figure.astro'
 
 const { post } = Astro.props
 ---
@@ -15,11 +14,9 @@ const { post } = Astro.props
 <article class="article_card">
   <div class="article_card-grid">
     <a class="article_card-image" href=`/blog/${post.id}`>
-      <Picture
+      <Figure
         src={ post.data.hero.image }
         alt={ post.data.hero.description }
-        formats={['avif', 'webp']}
-        widths={[400, 800, 1200]}
       />
     </a>
     <a class="article_card-title" href=`/blog/${post.id}`>
@@ -107,11 +104,12 @@ const { post } = Astro.props
     block-size: 100%;
 
 
-    picture,
-    img { width: 100%; height: 100%; }
+    :global(figure, picture) {
+      width: 100%; height: 100%;
+    }
 
 
-    img {
+    :global(img) {
       width: 100%; height: 100%;
       aspect-ratio: 16/9;
       object-fit: cover; object-position: center;
