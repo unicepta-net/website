@@ -9,13 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.1",
-    "astro": "^5.0.3",
+    "@astrojs/mdx": "^4.0.2",
+    "astro": "^5.1.0",
     "astro-icon": "^1.1.4",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@iconify-json/ph": "^1.2.1",
-    "sass": "^1.82.0"
+    "@iconify-json/ph": "^1.2.2",
+    "sass": "^1.83.0"
   }
 }
