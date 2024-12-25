@@ -16,16 +16,6 @@ html {
 
 
 
-:root {
-
-  --body-max-width: #{$body-max-width};
-  --body-padding: #{space(md)};
-  --calc-body-padding: calc((100svw - var(--body-max-width)) / 2);
-
-}
-
-
-
 
 img, picture, video, canvas, svg {
   display: block;
