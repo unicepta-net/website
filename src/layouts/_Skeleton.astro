@@ -16,7 +16,7 @@ import '@styles/global.scss'
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <slot name="head" />
   </head>
-  <body>
+  <body class="content-grid">
     <slot />
   </body>
 </html>
@@ -27,6 +27,7 @@ import '@styles/global.scss'
 
 <style lang="scss" is:global>
 
+  @use "@styles/variables" as *;
   @use "@styles/utils" as *;
 
 
@@ -36,13 +37,51 @@ import '@styles/global.scss'
       grid-template-rows: auto 1fr auto;
     };
     @include reset-spacing;
-    padding: var(--body-padding);
     min-height: 100vh;
     background-color: var(--background);
     container-type: inline-size;
+  }
 
 
-    > * { padding-inline: var(--calc-body-padding); }
+
+  .content-grid,
+  .full-width {
+    --_body-inline-padding: #{$body-inline-padding};
+    --_content-max-width: #{$content-max-width};
+    --_breakout-max-width: #{$breakout-max-width};
+
+    @include grid($gap: 0) {
+      grid-template-columns:
+        [full-width-start]
+        minmax(var(--_body-inline-padding), 1fr)
+        [breakout-start]
+        minmax(0, calc((var(--_breakout-max-width) - var(--_content-max-width)) / 2))
+        [content-start]
+        min(100% - (var(--_body-inline-padding) * 2), var(--_content-max-width))
+        [content-end]
+        minmax(0, calc((var(--_breakout-max-width) - var(--_content-max-width)) / 2))
+        [breakout-end]
+        minmax(var(--_body-inline-padding), 1fr)
+        [full-width-end];
+      grid-template-rows: auto 1fr auto;
+    }
+
+
+    > :not(.breakout, .full-width),
+    > .full-width:not(.breakout, .full-width) {
+      grid-column: content;
+    }
+
+
+    > .breakout {
+      grid-column: breakout;
+    }
+
+
+    > .content-grid,
+    > .full-width {
+      grid-column: full-width;
+    }
   }
 
 </style>
