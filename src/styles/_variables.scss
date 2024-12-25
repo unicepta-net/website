@@ -1,14 +1,16 @@
 @use 'sass:math';
 
 $base-size: 3;
-$body-max-width: 1200px;
+$content-max-width: 1200px;
+$breakout-max-width: $content-max-width + 100px;
+$body-inline-padding: 2rem;
 
 $stack-sans: 'Calibri', system-ui, sans-serif;
 $stack-serif: 'Playfair Display', 'Didot', 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
 
 
 
-@function border-radius ($size: md) {
+@function border-radius($size: md) {
   @if $size == sm { @return math.div($base-size, 10) * 2rem; }
   @if $size == md { @return math.div($base-size, 10) * 4rem; }
   @if $size == xl { @return math.div($base-size, 10) * 8rem; }
@@ -16,7 +18,7 @@ $stack-serif: 'Playfair Display', 'Didot', 'Bodoni MT', 'Noto Serif Display', 'U
 
 
 
-@function space ($size: md) {
+@function space($size: md) {
   @if $size == xs { @return math.div($base-size, 10) *  1rem; }
   @if $size == sm { @return math.div($base-size, 10) *  2rem; }
   @if $size == md { @return math.div($base-size, 10) *  4rem; }
