@@ -6,21 +6,19 @@ interface Props {
   src: ImageMetadata
   alt: string
   caption?: string
-  layout?: 'breakout' | 'left' | 'right'
-  context?: 'default' | 'blog'
+  breakout?: boolean
 }
 
-const { src, alt, caption, layout, context = 'default' } = Astro.props
-
-
-const maxWidth = context != 'blog' ? 'var(--body-max-width)' : 'var(--blog-max-width)'
+const { src, alt, caption, breakout } = Astro.props
 ---
 
 
 
 
 
-<figure data-layout={ layout } style=`--context-max-width: ${ maxWidth };`>
+<figure class:list={[{
+  'breakout': breakout,
+}]} >
   <Picture
     src={ src }
     alt={ alt }
@@ -42,6 +40,8 @@ const maxWidth = context != 'blog' ? 'var(--body-max-width)' : 'var(--blog-max-w
 
 
   figure {
+    padding-block-end: 1lh;
+
 
     figcaption {
       margin-block-start: .5em;
@@ -54,36 +54,6 @@ const maxWidth = context != 'blog' ? 'var(--body-max-width)' : 'var(--blog-max-w
     picture, img {
       width: 100%; height: 100%;
       border-radius: border-radius(sm);
-    }
-
-
-    &[data-layout='breakout'] {
-      margin-block: space(md);
-
-      @container (min-width: #{ $blog-max-width + ($image-breakout-size * 2) }) {
-        margin-block: space(lg);
-        width: calc(var(--context-max-width) + ( var(--image-breakout-size) * 2 ));
-        margin-inline-start: calc( var(--image-breakout-size) * -1 );
-      }
-    }
-
-
-    @container (min-width: #{ $blog-max-width }) {
-      &[data-layout='right'] {
-        float: right;
-        margin-inline-start: space(lg);
-        max-width: 50%;
-
-        figcaption { text-align: right; }
-      }
-
-      &[data-layout='left'] {
-        float: left;
-        margin-inline-end: space(lg);
-        max-width: 50%;
-
-        figcaption { text-align: left; }
-      }
     }
   }
 

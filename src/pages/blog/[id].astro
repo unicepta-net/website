@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content'
 
-import Layout from '@layouts/Default.astro'
+import Layout from '@layouts/Blog.astro'
 
 import Figure from '@components/Figure.astro'
 
@@ -32,22 +32,19 @@ const { Content } = await render(post);
     description={ post.data.summary }
   />
 
-  <article class="blog_article">
-    <header class="blog_article-header">
-      <h1>{post.data.title}</h1>
-      <p>{ formatDateString(post.data.datePosted) }</p>
-      <p>{ post.data.summary }</p>
-      <Figure
-        src={ post.data.hero.image }
-        alt={ post.data.hero.description }
-        caption={ post.data.hero.description }
-        layout='breakout'
-        context='blog'
-      />
-    </header>
+  <header class="blog_article-header full-width">
+    <h1>{post.data.title}</h1>
+    <p>{ formatDateString(post.data.datePosted) }</p>
+    <p>{ post.data.summary }</p>
+    <Figure
+      src={ post.data.hero.image }
+      alt={ post.data.hero.description }
+      caption={ post.data.hero.description }
+      breakout
+    />
+  </header>
 
-    <Content />
-  </article>
+  <Content />
 
 </Layout>
 
@@ -61,18 +58,13 @@ const { Content } = await render(post);
 
 
 
-  .blog_article {
-    margin-inline: auto;
-    max-width: $blog-max-width;
-
-    p { text-align: justify; text-align-last: left; }
+  p { text-align: justify; text-align-last: left; }
 
 
-    &-header {
-      img {
-        aspect-ratio: 2/1;
-        object-fit: cover; object-position: center;
-      }
+  .blog_article-header {
+    img {
+      aspect-ratio: 2/1;
+      object-fit: cover; object-position: center;
     }
   }
 
