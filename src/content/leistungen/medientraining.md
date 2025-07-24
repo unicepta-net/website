@@ -9,9 +9,9 @@ description: |
 
 ## Unser Angebot
 
-Wir bereiten Ihr Team gezielt auf medienöffentliche Auftritte vor – mit praxisnahen Trainings, realistischen Übungsszenarien und ehrlichem Feedback. Unsere Medientrainings vermitteln, wie Medienbeiträge funktionieren, worauf es bei Statements und Interviews ankommt und wie man auch unter Druck glaubwürdig, klar und professionell kommuniziert. Dabei arbeiten wir an Inhalt, Haltung, Körpersprache und Sprache – und machen Ihre Sprecher:innen fit für Kamera, Livestream oder Pressekonferenz.
+Wir bereiten Ihr Team gezielt auf medienöffentliche Auftritte vor – mit praxisnahen Trainings, realistischen Übungsszenarien und ehrlichem Feedback. Unsere Medientrainings vermitteln, wie Medienbeiträge funktionieren, worauf es bei Statements und Interviews ankommt und wie man auch unter Druck glaubwürdig, klar und professionell kommuniziert. Dabei arbeiten wir an Inhalt, Haltung, Körpersprache und Sprache – und machen Ihre Sprecherinnen und Sprecher fit für Kamera, Livestream oder Pressekonferenz.
 
-Unsere Trainer:innen verfügen über langjährige Erfahrung im Journalismus und in der Krisenkommunikation. Die Trainings lassen sich individuell an Zielgruppe, Medium und Thema anpassen – ob für Vorstand, Fachabteilung oder Krisenstab.
+Unsere Trainerinnen und Trainer verfügen über langjährige Erfahrung im Journalismus und in der Krisenkommunikation. Die Trainings lassen sich individuell an Zielgruppe, Medium und Thema anpassen – ob für Vorstand, Fachabteilung oder Krisenstab.
 
 <br><br><br>
 
